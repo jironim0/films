@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const initialState = {
-  active: false,
-  favoritItems: []
-};
-
 const filmsSlice = createSlice({
   name: "films",
-  initialState,
+  initialState: {
+    favoritItems: [],
+    active: false
+  },
   reducers: {
     setActive(state, action) {
       state.active = action.payload;
     },
     setFavoriteItems(state, action){
-      state.favoritItems.push(action.payload)
+      state.favoritItems.push({
+        title: action.payload,
+        imageUrl: action.payload,
+      })
     }
   },
 });

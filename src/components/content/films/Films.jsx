@@ -9,6 +9,7 @@ import Popup from "./Popup";
 
 const Films = ({title, imageUrl}) => {
   const dispatch = useDispatch()
+  
 
     // const [active, setActive] = React.useState(false)
   const [isAdded, setIsAdded] = React.useState(false);
@@ -18,11 +19,7 @@ const Films = ({title, imageUrl}) => {
     }
 
     const onClickFav = (obj) => {
-      dispatch(setFavoriteItems(prev => [...prev, obj]));
-      const info = {
-        title: '',
-        imageUrl: '',
-      }
+      dispatch(setFavoriteItems(imageUrl, title));
       setIsAdded(!isAdded);
       console.log(obj)
     }

@@ -5,9 +5,10 @@ import { setActive } from "../../redux/slices/filmsSlice";
 import Popup from "./films/Popup";
 
 export const Favorite = () => {
-  const items = useSelector(state => state.films)
+  const  items = useSelector(state => state.films.favoritItems)
   const dispatch = useDispatch()
 
+  console.log(items)
 
   const onClickActive = (action) => {
     dispatch(setActive(action))
