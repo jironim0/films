@@ -5,6 +5,10 @@ body {
   font-family: 'Montserrat', system-ui;
 }
 
+li[class] {
+  list-style: none;
+}
+
 
 
 .wrapper {
@@ -51,8 +55,6 @@ body {
   margin-left: 15px;
   margin-right: 25px;
   margin-bottom: 15px;
-
-
 }
 
 .profile {

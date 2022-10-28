@@ -16,7 +16,7 @@ const filmsSlice = createSlice({
       })
     },
     setDeleteFavorite(state, action){
-      state.favoritItems = state.favoritItems.filter(favorit => favorit.id !== action.payload.id)
+      state.favoritItems = state.favoritItems.filter(obj => obj.id !== action.payload.id)
     }
   },
 });
