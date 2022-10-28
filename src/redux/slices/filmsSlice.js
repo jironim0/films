@@ -12,12 +12,11 @@ const filmsSlice = createSlice({
     },
     setFavoriteItems(state, action){
       state.favoritItems.push({
-        id: new Date().toISOString(),
         favorit: action.payload
       })
     },
     setDeleteFavorite(state, action){
-      state.favoritItems = state.favoritItems.filter(obj => obj.id !== action.payload.id)
+      state.favoritItems = state.favoritItems.filter(favorit => favorit.id !== action.payload.id)
     }
   },
 });

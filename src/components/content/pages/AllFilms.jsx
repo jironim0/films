@@ -12,7 +12,7 @@ export const AllFilms = ({items, onClickLike, isAdded, onAddFavorite, id}) => {
       <SwiperTop items={items}/>      
       <div className='film_wrapp'>
           {
-          items.map((obj) => <Films {...obj} id={id} onClickLike={onClickLike} isAdded={isAdded} onAddFavorite={onAddFavorite}/>) 
+          items.map((obj) => <Films {...obj} onClickLike={onClickLike} isAdded={isAdded} onAddFavorite={onAddFavorite}/>) 
           }
       </div>
     </div>

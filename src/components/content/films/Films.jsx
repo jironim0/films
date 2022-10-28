@@ -19,7 +19,7 @@ const Films = ({title, imageUrl, id}) => {
     }
 
     const onClickFav = (obj) => {
-      dispatch(setFavoriteItems({imageUrl, title}));
+      dispatch(setFavoriteItems({imageUrl, title, id}));
       setIsAdded(!isAdded);
       console.log(obj)
     }
