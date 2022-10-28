@@ -7,7 +7,7 @@ import liked from '../../../assets/img/liked.svg'
 import Popup from "./Popup";
 
 
-const Films = ({title, imageUrl}) => {
+const Films = ({title, imageUrl, id}) => {
   const dispatch = useDispatch()
   
 
@@ -19,7 +19,7 @@ const Films = ({title, imageUrl}) => {
     }
 
     const onClickFav = (obj) => {
-      dispatch(setFavoriteItems(imageUrl, title));
+      dispatch(setFavoriteItems({imageUrl, title}));
       setIsAdded(!isAdded);
       console.log(obj)
     }
@@ -33,7 +33,7 @@ const Films = ({title, imageUrl}) => {
         Watch
       </button>
       <img 
-        onClick={() => onClickFav({title, imageUrl})} 
+        onClick={() => onClickFav({title, imageUrl, id})} 
         className="liked" 
         src={isAdded ? liked : unliked}
         alt="В Избранное">

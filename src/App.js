@@ -1,15 +1,14 @@
 import axios from "axios";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import AllFilms from "./components/content/AllFilms";
-import Favorite from "./components/content/Favorite";
+import AllFilms from "./components/content/pages/AllFilms";
+import Favorite from "./components/content/pages/Favorite";
 import { useSelector } from "react-redux";
 
 import Navigation from "./components/Navigation";
 
 function App() {
   const [items, setItems] = React.useState([]);
-  const {favoritItems} = useSelector(state => state.films)
 
   React.useEffect(() => {
     axios
@@ -30,10 +29,11 @@ function App() {
             element={
               <AllFilms
                 items={items}
+                id={items.id}
               />
             }
           />
-          <Route path="/favorite" element={<Favorite items={favoritItems} />} />
+          <Route path="/favorite" element={<Favorite />} />
         </Routes>
       </div>
     </div>

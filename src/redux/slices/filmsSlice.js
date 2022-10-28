@@ -12,13 +12,16 @@ const filmsSlice = createSlice({
     },
     setFavoriteItems(state, action){
       state.favoritItems.push({
-        title: action.payload,
-        imageUrl: action.payload,
+        id: new Date().toISOString(),
+        favorit: action.payload
       })
+    },
+    setDeleteFavorite(state, action){
+      state.favoritItems = state.favoritItems.filter(obj => obj.id !== action.payload.id)
     }
   },
 });
 
-export const { setActive, setFavoriteItems } = filmsSlice.actions;
+export const { setActive, setFavoriteItems, setDeleteFavorite } = filmsSlice.actions;
 
 export default filmsSlice.reducer;

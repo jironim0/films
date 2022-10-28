@@ -1,5 +1,5 @@
 import React from "react";
-import "../allFilm.css";
+import "./swiper.scss";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -15,7 +15,7 @@ const SwiperTop = ({items}) => {
   return (
     <>
       <Swiper
-        slidesPerView={3}
+        slidesPerView={1}
         spaceBetween={30}
         freeMode={true}
         pagination={{
@@ -25,7 +25,13 @@ const SwiperTop = ({items}) => {
         className="mySwiper"
       >
         {
-          items.map(film => <SwiperSlide>{film.title}</SwiperSlide>)
+          items.filter(function(items){if (items.rating > 5){return items}}).map(obj => <SwiperSlide>
+            <div className="lil_box">
+              <img src={obj.imageUrl} alt="картинка"></img>
+              <h1>{obj.title}</h1>
+            </div>
+
+          </SwiperSlide>)
         }
       </Swiper>
     </>
