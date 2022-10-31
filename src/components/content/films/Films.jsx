@@ -5,6 +5,7 @@ import unliked from '../../../assets/img/unliked.png'
 import liked from '../../../assets/img/liked.svg'
 
 import Popup from "./Popup";
+import axios from "axios";
 
 
 const Films = ({title, imageUrl, id}) => {
@@ -18,10 +19,17 @@ const Films = ({title, imageUrl, id}) => {
         dispatch(setActive(action))
     }
 
+    const postFavorite = ({title, imageUrl, id}) => {
+      axios.post(`https://63591e97ff3d7bddb99970b9.mockapi.io/favorite`, {
+        id: id,
+        title: title,
+        imageUrl: imageUrl,
+      })
+    }
+
     const onClickFav = (obj) => {
-      dispatch(setFavoriteItems({imageUrl, title, id}));
+      postFavorite(obj)
       setIsAdded(!isAdded);
-      console.log(obj)
     }
 
     

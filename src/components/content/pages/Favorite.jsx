@@ -1,15 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setActive, setDeleteFavorite } from "../../../redux/slices/filmsSlice";
+import { setActive, getFavorites, deleteFavorite } from "../../../redux/slices/filmsSlice";
 import "./favorite.scss";
 
 import Popup from "../films/Popup";
 
 export const Favorite = () => {
-  const items = useSelector((state) => state.films.favoritItems);
   const dispatch = useDispatch();
+  const { favoritItems, status, error } = useSelector((state) => state.films);
 
-  console.log(items);
+  React.useEffect(() => {
+    dispatch(getFavorites());
+  }, [dispatch]);
 
   const onClickActive = (action) => {
     dispatch(setActive(action));
@@ -17,17 +19,19 @@ export const Favorite = () => {
 
   return (
     <div className="profile">
-      <ul className="favorite__list">
-        {items?.map((obj, id) => (
+      <ul className="favorite__list" key={Number()}>
+        {status === "loading" && <h2>Loading...</h2>}
+        {error && <h2>{error}</h2>}
+        {favoritItems?.map((obj) => (
           <li className="favorite__item">
             <div className="favorite__img-container">
               <img
                 className="favorite__img"
-                src={obj.favorit.imageUrl}
+                src={obj.imageUrl}
                 alt="картинка"
               ></img>
             </div>
-            <h1 className="favorite__title">{obj.favorit.title}</h1>
+            <h1 className="favorite__title">{obj.title}</h1>
             <div className="favorite__actions_container">
               <button
                 className="favorite__button"
@@ -36,8 +40,8 @@ export const Favorite = () => {
                 Watch
               </button>
               <img
+                onClick={() => deleteFavorite(obj.id)}
                 className="favorite__button favorite__img-delete"
-                onClick={() => dispatch(setDeleteFavorite({ id }))}
                 src="https://free-png.ru/wp-content/uploads/2021/06/free-png.ru-38.png"
                 alt="Delete"
               ></img>

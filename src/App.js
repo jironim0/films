@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 function App() {
   const [items, setItems] = React.useState([]);
 
+
   React.useEffect(() => {
     axios
       .get(`https://63591e97ff3d7bddb99970b9.mockapi.io/item`)
@@ -29,7 +30,6 @@ function App() {
             element={
               <AllFilms
                 items={items}
-                id={items.id}
               />
             }
           />
