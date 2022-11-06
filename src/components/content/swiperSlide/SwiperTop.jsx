@@ -4,14 +4,13 @@ import "./swiper.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper";
+import { useSelector } from "react-redux";
 
-const SwiperTop = ({items}) => {
-  useEffect(() => {
-    console.dir(items)
-  }, [])
+const SwiperTop = () => {
+  const { arrFilm } = useSelector(state => state.films)
+
   return (
     <>
       <Swiper
@@ -25,7 +24,7 @@ const SwiperTop = ({items}) => {
         className="mySwiper"
       >
         {
-          items.filter(function(items){if (items.rating > 5){return items}}).map(obj => <SwiperSlide>
+          arrFilm?.filter(function(arrFilm){if (arrFilm.rating > 5){return arrFilm}}).map(obj => <SwiperSlide>
             <div className="lil_box">
               <img src={obj.imageUrl} alt="картинка"></img>
               <h1>{obj.title}</h1>

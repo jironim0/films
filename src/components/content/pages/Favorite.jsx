@@ -1,8 +1,9 @@
 import React from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { setActive, getFavorites, deleteFavorite } from "../../../redux/slices/filmsSlice";
-import "./favorite.scss";
 
+import "./favorite.scss";
 import Popup from "../films/Popup";
 
 export const Favorite = () => {
@@ -40,7 +41,7 @@ export const Favorite = () => {
                 Watch
               </button>
               <img
-                onClick={() => deleteFavorite(obj.id)}
+                onClick={() => dispatch(deleteFavorite(obj.id))}
                 className="favorite__button favorite__img-delete"
                 src="https://free-png.ru/wp-content/uploads/2021/06/free-png.ru-38.png"
                 alt="Delete"

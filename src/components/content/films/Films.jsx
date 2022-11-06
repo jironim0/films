@@ -1,29 +1,26 @@
 import React from "react";
+import axios from "axios";
+
 import { useSelector, useDispatch } from "react-redux";
-import { setActive, setFavoriteItems } from "../../../redux/slices/filmsSlice";
+import { setActive } from "../../../redux/slices/filmsSlice";
+
 import unliked from '../../../assets/img/unliked.png'
 import liked from '../../../assets/img/liked.svg'
 
 import Popup from "./Popup";
-import axios from "axios";
 
 
-const Films = ({title, imageUrl, id}) => {
-  const dispatch = useDispatch()
-  
+const Films = (obj) => {
 
-    // const [active, setActive] = React.useState(false)
   const [isAdded, setIsAdded] = React.useState(false);
 
     const onClickActive = (action) => {
         dispatch(setActive(action))
     }
 
-    const postFavorite = ({title, imageUrl, id}) => {
+    const postFavorite = (obj) => {
       axios.post(`https://63591e97ff3d7bddb99970b9.mockapi.io/favorite`, {
-        id: id,
-        title: title,
-        imageUrl: imageUrl,
+        ...obj,
       })
     }
 
@@ -32,16 +29,15 @@ const Films = ({title, imageUrl, id}) => {
       setIsAdded(!isAdded);
     }
 
-    
   return (
     <div className="box_film">
-      <img src={imageUrl} alt="картинка"></img>
-      <h1>{title}</h1>
+      <img src={obj.imageUrl} alt="картинка"></img>
+      <h1>{obj.title}</h1>
       <button onClick={(action) => onClickActive(action)}>
         Watch
       </button>
       <img 
-        onClick={() => onClickFav({title, imageUrl, id})} 
+        onClick={() => onClickFav(obj)} 
         className="liked" 
         src={isAdded ? liked : unliked}
         alt="В Избранное">

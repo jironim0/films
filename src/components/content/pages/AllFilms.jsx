@@ -2,18 +2,22 @@ import React from 'react'
 import Films from '../films/Films'
 import SwiperTop from '../swiperSlide/SwiperTop'
 
+import {setFilm} from '../../../redux/slices/filmsSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
-export const AllFilms = ({items, onClickLike, isAdded, onAddFavorite, id}) => {
-
-
+export const AllFilms = (obj) => {
+  const dispatch = useDispatch()
+  const {arrFilm} = useSelector(state => state.films)
+  
+  React.useEffect(() => {
+    dispatch(setFilm());
+  }, [dispatch]);
 
   return (
     <div className="top--slider">
-      <SwiperTop items={items}/>      
+      <SwiperTop />      
       <div className='film_wrapp'>
-          {
-          items.map((obj) => <Films {...obj} onClickLike={onClickLike} isAdded={isAdded} onAddFavorite={onAddFavorite}/>) 
-          }
+        {arrFilm?.map((obj) => <Films {...obj}/>)}
       </div>
     </div>
   )
