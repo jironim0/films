@@ -6,6 +6,7 @@ export const Navigation = () => {
   return (
     <div className='navigation'>
         <ul>
+            <Link to="/login"><li>Login</li></Link>
             <Link to="/allfilms"><li>All Films</li></Link>
             <Link to="/favorite"><li>Favorite Films</li></Link>
           <li>LogOut</li>

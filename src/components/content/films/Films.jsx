@@ -1,18 +1,19 @@
 import React from "react";
 import axios from "axios";
 
-import { useSelector, useDispatch } from "react-redux";
 import { setActive } from "../../../redux/slices/filmsSlice";
 
 import unliked from '../../../assets/img/unliked.png'
 import liked from '../../../assets/img/liked.svg'
 
 import Popup from "./Popup";
+import { useDispatch } from "react-redux";
 
 
 const Films = (obj) => {
-
+  const dispatch = useDispatch()
   const [isAdded, setIsAdded] = React.useState(false);
+  
 
     const onClickActive = (action) => {
         dispatch(setActive(action))

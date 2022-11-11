@@ -1,12 +1,12 @@
-import axios from "axios";
 import React from "react";
-
 
 import { Route, Routes } from "react-router-dom";
 
 import AllFilms from "./components/content/pages/AllFilms";
-import Favorite from "./components/content/pages/Favorite";
-import Navigation from "./components/Navigation";
+import Favorite from "./components/content/pages/favoritePage/Favorite";
+import Navigation from "./components/content/Header/Navigation";
+import { Login } from "./components/content/pages/login/Login";
+import { Registration } from "./components/content/pages/register/Registration.jsx";
 
 function App() {
   // const [items, setItems] = React.useState([]);
@@ -31,6 +31,8 @@ function App() {
             element={<AllFilms/>}
           />
           <Route path="/favorite" element={<Favorite />} />
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/registration" element={<Registration />} />
         </Routes>
       </div>
     </div>

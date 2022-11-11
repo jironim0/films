@@ -1,10 +1,10 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setActive, getFavorites, deleteFavorite } from "../../../redux/slices/filmsSlice";
+import { setActive, getFavorites, deleteFavorite } from "../../../../redux/slices/filmsSlice";
 
 import "./favorite.scss";
-import Popup from "../films/Popup";
+import Popup from "../../films/Popup";
 
 export const Favorite = () => {
   const dispatch = useDispatch();
